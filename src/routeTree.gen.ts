@@ -28,6 +28,7 @@ import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
 import { Route as AdminPostsRouteRouteImport } from './routes/admin/posts/route'
+import { Route as GardenStarsIndexRouteImport } from './routes/garden/stars/index'
 import { Route as AdminVisitorsIndexRouteImport } from './routes/admin/visitors/index'
 import { Route as AdminUsersIndexRouteImport } from './routes/admin/users/index'
 import { Route as AdminTagsIndexRouteImport } from './routes/admin/tags/index'
@@ -139,6 +140,11 @@ const AdminPostsRouteRoute = AdminPostsRouteRouteImport.update({
   id: '/posts',
   path: '/posts',
   getParentRoute: () => AdminRouteRoute,
+} as any)
+const GardenStarsIndexRoute = GardenStarsIndexRouteImport.update({
+  id: '/garden/stars/',
+  path: '/garden/stars/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminVisitorsIndexRoute = AdminVisitorsIndexRouteImport.update({
   id: '/visitors/',
@@ -271,6 +277,7 @@ export interface FileRoutesByFullPath {
   '/admin/tags/': typeof AdminTagsIndexRoute
   '/admin/users/': typeof AdminUsersIndexRoute
   '/admin/visitors/': typeof AdminVisitorsIndexRoute
+  '/garden/stars/': typeof GardenStarsIndexRoute
   '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRoutesByTo {
@@ -306,6 +313,7 @@ export interface FileRoutesByTo {
   '/admin/tags': typeof AdminTagsIndexRoute
   '/admin/users': typeof AdminUsersIndexRoute
   '/admin/visitors': typeof AdminVisitorsIndexRoute
+  '/garden/stars': typeof GardenStarsIndexRoute
   '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRoutesById {
@@ -347,6 +355,7 @@ export interface FileRoutesById {
   '/admin/tags/': typeof AdminTagsIndexRoute
   '/admin/users/': typeof AdminUsersIndexRoute
   '/admin/visitors/': typeof AdminVisitorsIndexRoute
+  '/garden/stars/': typeof GardenStarsIndexRoute
   '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRouteTypes {
@@ -386,6 +395,7 @@ export interface FileRouteTypes {
     | '/admin/tags/'
     | '/admin/users/'
     | '/admin/visitors/'
+    | '/garden/stars/'
     | '/admin/posts/edit/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -421,6 +431,7 @@ export interface FileRouteTypes {
     | '/admin/tags'
     | '/admin/users'
     | '/admin/visitors'
+    | '/garden/stars'
     | '/admin/posts/edit/$id'
   id:
     | '__root__'
@@ -461,6 +472,7 @@ export interface FileRouteTypes {
     | '/admin/tags/'
     | '/admin/users/'
     | '/admin/visitors/'
+    | '/garden/stars/'
     | '/admin/posts/edit/$id'
   fileRoutesById: FileRoutesById
 }
@@ -470,6 +482,7 @@ export interface RootRouteChildren {
   UserRouteRoute: typeof UserRouteRouteWithChildren
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
   OauthConsentRoute: typeof OauthConsentRoute
+  GardenStarsIndexRoute: typeof GardenStarsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -606,6 +619,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/admin/posts'
       preLoaderRoute: typeof AdminPostsRouteRouteImport
       parentRoute: typeof AdminRouteRoute
+    }
+    '/garden/stars/': {
+      id: '/garden/stars/'
+      path: '/garden/stars'
+      fullPath: '/garden/stars/'
+      preLoaderRoute: typeof GardenStarsIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/visitors/': {
       id: '/admin/visitors/'
@@ -865,6 +885,7 @@ const rootRouteChildren: RootRouteChildren = {
   UserRouteRoute: UserRouteRouteWithChildren,
   AdminRouteRoute: AdminRouteRouteWithChildren,
   OauthConsentRoute: OauthConsentRoute,
+  GardenStarsIndexRoute: GardenStarsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

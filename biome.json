@@ -22,7 +22,8 @@
       "!src/paraglide",
       "!src/routeTree.gen.ts",
       "!worker-configuration.d.ts",
-      "!migrations/**/*"
+      "!migrations/**/*",
+      "!src/features/toolbox/**/*"
     ]
   },
   "formatter": {

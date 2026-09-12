@@ -54,6 +54,13 @@ export function MobileMenu({
               {option.label}
             </Link>
           ))}
+          <Link
+            to="/garden/stars"
+            onClick={onClose}
+            className="glass-button px-4 py-3 text-foreground/85 hover:text-foreground"
+          >
+            星港 · 3D 太阳系
+          </Link>
         </nav>
 
         <div className="mt-auto pt-6 border-t border-border/30">

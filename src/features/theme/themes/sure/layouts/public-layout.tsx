@@ -1,6 +1,7 @@
 import { useRouteContext } from "@tanstack/react-router";
 import { useState } from "react";
 import type { PublicLayoutProps } from "@/features/theme/contract/layouts";
+import { ToolboxMount } from "@/features/toolbox/components/toolbox-mount";
 import { BackgroundLayer } from "../components/background-layer";
 import { Footer } from "./footer";
 import { MobileMenu } from "./mobile-menu";
@@ -37,6 +38,7 @@ export function PublicLayout({
       />
       <main className="flex-1 pt-24 md:pt-28">{children}</main>
       <Footer navOptions={navOptions} />
+      <ToolboxMount />
     </div>
   );
 }

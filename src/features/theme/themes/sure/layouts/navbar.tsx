@@ -59,6 +59,13 @@ export function Navbar({ onMenuClick, user, navOptions, isLoading }: NavbarProps
               {option.label}
             </Link>
           ))}
+          <Link
+            to="/garden/stars"
+            className="glass-button px-4 py-2 text-sm text-foreground/80 hover:text-foreground !rounded-full"
+            activeProps={{ className: "!bg-white/60 dark:!bg-slate-700/60" }}
+          >
+            星港
+          </Link>
         </nav>
 
         {/* Right: Actions */}

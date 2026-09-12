@@ -33,7 +33,9 @@ export const ROUTE_REGEXPS: Array<RegExp> = [
   /^\/admin\/projects\/?$/,
   /^\/admin\/settings\/?$/,
   /^\/admin\/tags\/?$/,
+  /^\/admin\/users\/?$/,
   /^\/admin\/visitors\/?$/,
+  /^\/garden\/stars\/?$/,
   /^\/admin\/posts\/edit\/[^/]+\/?$/,
 ];
 
