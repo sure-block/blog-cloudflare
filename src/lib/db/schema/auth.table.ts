@@ -20,6 +20,9 @@ export const user = sqliteTable("user", {
   banned: integer("banned", { mode: "boolean" }).default(false),
   banReason: text("ban_reason"),
   banExpires: integer("ban_expires", { mode: "timestamp_ms" }),
+  // ===== 第二站迁移新增字段 =====
+  nickname: text("nickname").notNull().default(""),
+  bio: text("bio").notNull().default(""),
 });
 
 export const session = sqliteTable(

@@ -43,6 +43,12 @@ export const CommentsTable = sqliteTable(
       .references(() => PostsTable.id, { onDelete: "cascade" }),
     userId: text("user_id").references(() => user.id, { onDelete: "set null" }),
 
+    // ===== 第二站迁移新增字段 =====
+    likes: integer().notNull().default(0),
+    ip: text().notNull().default(""),
+    emailUserName: text("email_user_name").notNull().default(""),
+    emailUserAvatar: text("email_user_avatar").notNull().default(""),
+
     createdAt,
     updatedAt,
   },

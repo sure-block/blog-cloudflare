@@ -8,6 +8,7 @@ import {
   text,
 } from "drizzle-orm/sqlite-core";
 import { createdAt, id, updatedAt } from "./helper";
+import { CategoriesTable } from "./categories.table";
 
 export const POST_STATUSES = ["draft", "published"] as const;
 
@@ -27,12 +28,21 @@ export const PostsTable = sqliteTable(
     status: text("status", { enum: POST_STATUSES }).notNull().default("draft"),
     publishedAt: integer("published_at", { mode: "timestamp" }),
     pinnedAt: integer("pinned_at", { mode: "timestamp" }),
+    // ===== 第二站迁移新增字段 =====
+    categoryId: integer("category_id").references(() => CategoriesTable.id, {
+      onDelete: "set null",
+    }),
+    cover: text(),
+    views: integer().notNull().default(0),
+    likes: integer().notNull().default(0),
+    wordCount: integer("word_count").notNull().default(0),
     createdAt,
     updatedAt,
   },
   (table) => [
     index("published_at_idx").on(table.publishedAt, table.status),
     index("created_at_idx").on(table.createdAt),
+    index("posts_category_idx").on(table.categoryId),
   ],
 );
 
@@ -59,8 +69,12 @@ export const PostTagsTable = sqliteTable(
 );
 
 // ==================== relations ====================
-export const postsRelations = relations(PostsTable, ({ many }) => ({
+export const postsRelations = relations(PostsTable, ({ one, many }) => ({
   postTags: many(PostTagsTable),
+  category: one(CategoriesTable, {
+    fields: [PostsTable.categoryId],
+    references: [CategoriesTable.id],
+  }),
 }));
 
 export const tagsRelations = relations(TagsTable, ({ many }) => ({
