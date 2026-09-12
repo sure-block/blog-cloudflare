@@ -1,0 +1,310 @@
+@import "tailwindcss";
+@import "@/styles/shared.css";
+
+@import "@fontsource-variable/noto-sans-sc";
+@import "@fontsource-variable/noto-serif-sc";
+@import "@fontsource-variable/jetbrains-mono";
+
+/* ============================================================
+ * Sure 主题 — 玻璃拟态（Glassmorphism）
+ * 样式移植自第二站 ddmer-1 app/globals.css，适配第一站 CSS 变量体系
+ * ============================================================ */
+
+@layer base {
+  :root {
+    --background: 240 40% 98%;
+    --foreground: 240 30% 12%;
+
+    --muted: 240 20% 95%;
+    --muted-foreground: 240 10% 42%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 30% 12%;
+
+    --border: 240 15% 88%;
+    --input: 240 15% 88%;
+
+    --primary: 245 70% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 245 30% 92%;
+    --secondary-foreground: 245 40% 30%;
+
+    --accent: 262 60% 94%;
+    --accent-foreground: 262 50% 35%;
+
+    --ring: 245 70% 60%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --info: 221.2 83.2% 53.3%;
+    --info-foreground: 0 0% 100%;
+
+    --selection: 245 70% 60%;
+    --selection-foreground: 0 0% 100%;
+  }
+
+  .dark {
+    --background: 240 50% 8%;
+    --foreground: 0 0% 96%;
+
+    --muted: 240 25% 16%;
+    --muted-foreground: 240 12% 65%;
+
+    --popover: 240 40% 10%;
+    --popover-foreground: 0 0% 96%;
+
+    --border: 240 20% 20%;
+    --input: 240 20% 20%;
+
+    --primary: 245 85% 72%;
+    --primary-foreground: 240 50% 8%;
+
+    --secondary: 245 30% 22%;
+    --secondary-foreground: 245 50% 88%;
+
+    --accent: 262 40% 22%;
+    --accent-foreground: 262 60% 90%;
+
+    --ring: 245 85% 72%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --warning: 48 96% 89%;
+    --warning-foreground: 38 92% 50%;
+
+    --info: 217.2 91.2% 59.8%;
+    --info-foreground: 0 0% 100%;
+
+    --selection: 245 85% 72%;
+    --selection-foreground: 240 50% 8%;
+  }
+}
+
+/* ========== 毛玻璃基础样式（第二站 globals.css 移植） ========== */
+
+/* 毛玻璃卡片 */
+.glass-card {
+  background: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+}
+
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* 毛玻璃按钮 */
+.glass-button {
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dark .glass-button {
+  background: rgba(51, 65, 85, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-button:hover {
+  background: rgba(71, 85, 105, 0.6);
+}
+
+/* 毛玻璃输入框 */
+.glass-input {
+  background: rgba(255, 255, 255, 0.3);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+  border-color: rgba(99, 102, 241, 0.5);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.dark .glass-input {
+  background: rgba(51, 65, 85, 0.5);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .glass-input:focus {
+  border-color: rgba(129, 140, 248, 0.5);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.1);
+}
+
+/* ========== 背景渐变动画（第二站移植） ========== */
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.gradient-background {
+  background-size: 400% 400%;
+  animation: gradient-flow 15s ease infinite;
+}
+
+/* 暗色模式背景增强 */
+.dark body {
+  background: linear-gradient(
+    135deg,
+    #0f0b2e 0%,
+    #1a1145 25%,
+    #0d1b3e 50%,
+    #1e1145 75%,
+    #0f0b2e 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 20s ease infinite;
+}
+
+/* 亮色模式柔和渐变背景 */
+body {
+  background: linear-gradient(
+    135deg,
+    #e0e7ff 0%,
+    #f5f3ff 25%,
+    #dbeafe 50%,
+    #fce7f3 75%,
+    #e0e7ff 100%
+  );
+  background-size: 400% 400%;
+  animation: gradient-flow 25s ease infinite;
+}
+
+/* ========== 自定义滚动条（第二站移植） ========== */
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.3) transparent;
+}
+
+/* ========== 图标果冻动画（第二站移植） ========== */
+
+@keyframes icon-jelly {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  15% {
+    transform: rotate(8deg) scale(1.05);
+    transform-origin: bottom right;
+  }
+  30% {
+    transform: rotate(-10deg) scale(1.08);
+    transform-origin: bottom left;
+  }
+  45% {
+    transform: rotate(5deg) scale(1.04);
+    transform-origin: bottom right;
+  }
+  60% {
+    transform: rotate(-4deg) scale(1.02);
+    transform-origin: bottom left;
+  }
+  75% {
+    transform: rotate(2deg) scale(1.01);
+    transform-origin: bottom right;
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+/* ========== 淡入动画 ========== */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fade-in-up 0.6s ease both;
+}
+
+/* 渐变头像环（第二站 ProfileCard 移植） */
+.gradient-ring {
+  background: linear-gradient(
+    to top right,
+    #38bdf8,
+    #818cf8,
+    #c084fc
+  );
+  padding: 3px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(129, 140, 248, 0.4);
+}
+
+/* 悬停上浮 */
+.hover-lift {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 文字渐变 */
+.text-gradient {
+  background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}

@@ -8,9 +8,10 @@ export function getThemePreloadImages(siteConfig: SiteConfig): Array<string> {
         ? [siteConfig.theme.fuwari.homeBg]
         : [];
     case "default":
+    case "sure":
       return [
-        siteConfig.theme.default.background?.homeImage,
-        siteConfig.theme.default.background?.globalImage,
+        siteConfig.theme[__THEME_NAME__].background?.homeImage,
+        siteConfig.theme[__THEME_NAME__].background?.globalImage,
       ].filter((image): image is string => Boolean(image));
     default:
       __THEME_NAME__ satisfies never;

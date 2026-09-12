@@ -132,6 +132,31 @@ export function resolveSiteConfig(
           config?.site?.theme?.fuwari?.primaryHue ??
           blogConfig.theme.fuwari.primaryHue,
       },
+      sure: {
+        navBarName:
+          config?.site?.theme?.sure?.navBarName ??
+          blogConfig.theme.sure.navBarName,
+        background: config?.site?.theme?.sure?.background
+          ? {
+              homeImage:
+                config.site.theme.sure.background?.homeImage ?? "",
+              globalImage:
+                config.site.theme.sure.background?.globalImage ?? "",
+              light: {
+                opacity:
+                  config.site.theme.sure.background?.light?.opacity ?? 0.15,
+              },
+              dark: {
+                opacity:
+                  config.site.theme.sure.background?.dark?.opacity ?? 0.1,
+              },
+              backdropBlur:
+                config.site.theme.sure.background?.backdropBlur ?? 8,
+              transitionDuration:
+                config.site.theme.sure.background?.transitionDuration ?? 600,
+            }
+          : undefined,
+      },
     },
   });
 }

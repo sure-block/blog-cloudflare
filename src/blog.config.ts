@@ -27,5 +27,8 @@ export const blogConfig = {
       avatar: "/images/avatar.png",
       primaryHue: 250,
     },
+    sure: {
+      navBarName: "导航栏名称",
+    },
   },
 } as const satisfies SiteConfig;
