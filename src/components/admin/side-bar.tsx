@@ -1,14 +1,23 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
+  Album,
+  AudioLines,
+  BookMarked,
+  BookOpen,
+  Boxes,
   FileText,
+  FolderOpen,
   Image as ImageIcon,
+  Inbox,
   LayoutDashboard,
   Link2,
   LogOut,
   MessageSquare,
+  ScrollText,
   Tag,
   User,
+  Users,
   X,
 } from "lucide-react";
 import { useState } from "react";
@@ -86,6 +95,12 @@ export function SideBar({
       exact: false,
     },
     {
+      path: "/admin/categories",
+      icon: FolderOpen,
+      label: "分类管理",
+      exact: false,
+    },
+    {
       path: "/admin/media",
       icon: ImageIcon,
       label: m.admin_sidebar_media(),
@@ -98,9 +113,69 @@ export function SideBar({
       exact: false,
     },
     {
+      path: "/admin/chatters",
+      icon: Inbox,
+      label: "留言板",
+      exact: false,
+    },
+    {
+      path: "/admin/messages",
+      icon: Boxes,
+      label: "留言消息",
+      exact: false,
+    },
+    {
       path: "/admin/friend-links",
       icon: Link2,
       label: m.admin_sidebar_friend_links(),
+      exact: false,
+    },
+    {
+      path: "/admin/music",
+      icon: AudioLines,
+      label: "音乐管理",
+      exact: false,
+    },
+    {
+      path: "/admin/albums",
+      icon: Album,
+      label: "相册管理",
+      exact: false,
+    },
+    {
+      path: "/admin/books",
+      icon: BookOpen,
+      label: "书籍管理",
+      exact: false,
+    },
+    {
+      path: "/admin/bookmarks",
+      icon: BookMarked,
+      label: "书签管理",
+      exact: false,
+    },
+    {
+      path: "/admin/projects",
+      icon: Boxes,
+      label: "项目展示",
+      exact: false,
+    },
+    {
+      path: "/admin/visitors",
+      icon: Users,
+      label: "访客统计",
+      exact: false,
+    },
+    {
+      path: "/admin/login-logs",
+      icon: ScrollText,
+      label: "登录日志",
+      exact: false,
+    },
+    {
+      path: "/admin/users",
+      icon: User,
+      label: "用户管理",
       exact: false,
     },
   ] satisfies Array<NavItem>;

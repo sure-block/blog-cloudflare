@@ -28,12 +28,23 @@ import { Route as AuthRegisterRouteImport } from './routes/_auth/register'
 import { Route as AuthLoginRouteImport } from './routes/_auth/login'
 import { Route as AuthForgotPasswordRouteImport } from './routes/_auth/forgot-password'
 import { Route as AdminPostsRouteRouteImport } from './routes/admin/posts/route'
+import { Route as AdminVisitorsIndexRouteImport } from './routes/admin/visitors/index'
+import { Route as AdminUsersIndexRouteImport } from './routes/admin/users/index'
 import { Route as AdminTagsIndexRouteImport } from './routes/admin/tags/index'
 import { Route as AdminSettingsIndexRouteImport } from './routes/admin/settings/index'
+import { Route as AdminProjectsIndexRouteImport } from './routes/admin/projects/index'
 import { Route as AdminPostsIndexRouteImport } from './routes/admin/posts/index'
+import { Route as AdminMusicIndexRouteImport } from './routes/admin/music/index'
+import { Route as AdminMessagesIndexRouteImport } from './routes/admin/messages/index'
 import { Route as AdminMediaIndexRouteImport } from './routes/admin/media/index'
+import { Route as AdminLoginLogsIndexRouteImport } from './routes/admin/login-logs/index'
 import { Route as AdminFriendLinksIndexRouteImport } from './routes/admin/friend-links/index'
 import { Route as AdminCommentsIndexRouteImport } from './routes/admin/comments/index'
+import { Route as AdminChattersIndexRouteImport } from './routes/admin/chatters/index'
+import { Route as AdminCategoriesIndexRouteImport } from './routes/admin/categories/index'
+import { Route as AdminBooksIndexRouteImport } from './routes/admin/books/index'
+import { Route as AdminBookmarksIndexRouteImport } from './routes/admin/bookmarks/index'
+import { Route as AdminAlbumsIndexRouteImport } from './routes/admin/albums/index'
 import { Route as PublicPostSlugRouteImport } from './routes/_public/post/$slug'
 import { Route as AdminPostsEditIdRouteImport } from './routes/admin/posts/edit.$id'
 
@@ -129,6 +140,16 @@ const AdminPostsRouteRoute = AdminPostsRouteRouteImport.update({
   path: '/posts',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminVisitorsIndexRoute = AdminVisitorsIndexRouteImport.update({
+  id: '/visitors/',
+  path: '/visitors/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminUsersIndexRoute = AdminUsersIndexRouteImport.update({
+  id: '/users/',
+  path: '/users/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminTagsIndexRoute = AdminTagsIndexRouteImport.update({
   id: '/tags/',
   path: '/tags/',
@@ -139,14 +160,34 @@ const AdminSettingsIndexRoute = AdminSettingsIndexRouteImport.update({
   path: '/settings/',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const AdminProjectsIndexRoute = AdminProjectsIndexRouteImport.update({
+  id: '/projects/',
+  path: '/projects/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminPostsIndexRoute = AdminPostsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => AdminPostsRouteRoute,
 } as any)
+const AdminMusicIndexRoute = AdminMusicIndexRouteImport.update({
+  id: '/music/',
+  path: '/music/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminMessagesIndexRoute = AdminMessagesIndexRouteImport.update({
+  id: '/messages/',
+  path: '/messages/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
 const AdminMediaIndexRoute = AdminMediaIndexRouteImport.update({
   id: '/media/',
   path: '/media/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminLoginLogsIndexRoute = AdminLoginLogsIndexRouteImport.update({
+  id: '/login-logs/',
+  path: '/login-logs/',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 const AdminFriendLinksIndexRoute = AdminFriendLinksIndexRouteImport.update({
@@ -157,6 +198,31 @@ const AdminFriendLinksIndexRoute = AdminFriendLinksIndexRouteImport.update({
 const AdminCommentsIndexRoute = AdminCommentsIndexRouteImport.update({
   id: '/comments/',
   path: '/comments/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminChattersIndexRoute = AdminChattersIndexRouteImport.update({
+  id: '/chatters/',
+  path: '/chatters/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminCategoriesIndexRoute = AdminCategoriesIndexRouteImport.update({
+  id: '/categories/',
+  path: '/categories/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminBooksIndexRoute = AdminBooksIndexRouteImport.update({
+  id: '/books/',
+  path: '/books/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminBookmarksIndexRoute = AdminBookmarksIndexRouteImport.update({
+  id: '/bookmarks/',
+  path: '/bookmarks/',
+  getParentRoute: () => AdminRouteRoute,
+} as any)
+const AdminAlbumsIndexRoute = AdminAlbumsIndexRouteImport.update({
+  id: '/albums/',
+  path: '/albums/',
   getParentRoute: () => AdminRouteRoute,
 } as any)
 const PublicPostSlugRoute = PublicPostSlugRouteImport.update({
@@ -188,12 +254,23 @@ export interface FileRoutesByFullPath {
   '/oauth/consent': typeof OauthConsentRoute
   '/admin/': typeof AdminIndexRoute
   '/post/$slug': typeof PublicPostSlugRoute
+  '/admin/albums/': typeof AdminAlbumsIndexRoute
+  '/admin/bookmarks/': typeof AdminBookmarksIndexRoute
+  '/admin/books/': typeof AdminBooksIndexRoute
+  '/admin/categories/': typeof AdminCategoriesIndexRoute
+  '/admin/chatters/': typeof AdminChattersIndexRoute
   '/admin/comments/': typeof AdminCommentsIndexRoute
   '/admin/friend-links/': typeof AdminFriendLinksIndexRoute
+  '/admin/login-logs/': typeof AdminLoginLogsIndexRoute
   '/admin/media/': typeof AdminMediaIndexRoute
+  '/admin/messages/': typeof AdminMessagesIndexRoute
+  '/admin/music/': typeof AdminMusicIndexRoute
   '/admin/posts/': typeof AdminPostsIndexRoute
+  '/admin/projects/': typeof AdminProjectsIndexRoute
   '/admin/settings/': typeof AdminSettingsIndexRoute
   '/admin/tags/': typeof AdminTagsIndexRoute
+  '/admin/users/': typeof AdminUsersIndexRoute
+  '/admin/visitors/': typeof AdminVisitorsIndexRoute
   '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRoutesByTo {
@@ -212,12 +289,23 @@ export interface FileRoutesByTo {
   '/oauth/consent': typeof OauthConsentRoute
   '/admin': typeof AdminIndexRoute
   '/post/$slug': typeof PublicPostSlugRoute
+  '/admin/albums': typeof AdminAlbumsIndexRoute
+  '/admin/bookmarks': typeof AdminBookmarksIndexRoute
+  '/admin/books': typeof AdminBooksIndexRoute
+  '/admin/categories': typeof AdminCategoriesIndexRoute
+  '/admin/chatters': typeof AdminChattersIndexRoute
   '/admin/comments': typeof AdminCommentsIndexRoute
   '/admin/friend-links': typeof AdminFriendLinksIndexRoute
+  '/admin/login-logs': typeof AdminLoginLogsIndexRoute
   '/admin/media': typeof AdminMediaIndexRoute
+  '/admin/messages': typeof AdminMessagesIndexRoute
+  '/admin/music': typeof AdminMusicIndexRoute
   '/admin/posts': typeof AdminPostsIndexRoute
+  '/admin/projects': typeof AdminProjectsIndexRoute
   '/admin/settings': typeof AdminSettingsIndexRoute
   '/admin/tags': typeof AdminTagsIndexRoute
+  '/admin/users': typeof AdminUsersIndexRoute
+  '/admin/visitors': typeof AdminVisitorsIndexRoute
   '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRoutesById {
@@ -242,12 +330,23 @@ export interface FileRoutesById {
   '/_public/': typeof PublicIndexRoute
   '/admin/': typeof AdminIndexRoute
   '/_public/post/$slug': typeof PublicPostSlugRoute
+  '/admin/albums/': typeof AdminAlbumsIndexRoute
+  '/admin/bookmarks/': typeof AdminBookmarksIndexRoute
+  '/admin/books/': typeof AdminBooksIndexRoute
+  '/admin/categories/': typeof AdminCategoriesIndexRoute
+  '/admin/chatters/': typeof AdminChattersIndexRoute
   '/admin/comments/': typeof AdminCommentsIndexRoute
   '/admin/friend-links/': typeof AdminFriendLinksIndexRoute
+  '/admin/login-logs/': typeof AdminLoginLogsIndexRoute
   '/admin/media/': typeof AdminMediaIndexRoute
+  '/admin/messages/': typeof AdminMessagesIndexRoute
+  '/admin/music/': typeof AdminMusicIndexRoute
   '/admin/posts/': typeof AdminPostsIndexRoute
+  '/admin/projects/': typeof AdminProjectsIndexRoute
   '/admin/settings/': typeof AdminSettingsIndexRoute
   '/admin/tags/': typeof AdminTagsIndexRoute
+  '/admin/users/': typeof AdminUsersIndexRoute
+  '/admin/visitors/': typeof AdminVisitorsIndexRoute
   '/admin/posts/edit/$id': typeof AdminPostsEditIdRoute
 }
 export interface FileRouteTypes {
@@ -270,12 +369,23 @@ export interface FileRouteTypes {
     | '/oauth/consent'
     | '/admin/'
     | '/post/$slug'
+    | '/admin/albums/'
+    | '/admin/bookmarks/'
+    | '/admin/books/'
+    | '/admin/categories/'
+    | '/admin/chatters/'
     | '/admin/comments/'
     | '/admin/friend-links/'
+    | '/admin/login-logs/'
     | '/admin/media/'
+    | '/admin/messages/'
+    | '/admin/music/'
     | '/admin/posts/'
+    | '/admin/projects/'
     | '/admin/settings/'
     | '/admin/tags/'
+    | '/admin/users/'
+    | '/admin/visitors/'
     | '/admin/posts/edit/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -294,12 +404,23 @@ export interface FileRouteTypes {
     | '/oauth/consent'
     | '/admin'
     | '/post/$slug'
+    | '/admin/albums'
+    | '/admin/bookmarks'
+    | '/admin/books'
+    | '/admin/categories'
+    | '/admin/chatters'
     | '/admin/comments'
     | '/admin/friend-links'
+    | '/admin/login-logs'
     | '/admin/media'
+    | '/admin/messages'
+    | '/admin/music'
     | '/admin/posts'
+    | '/admin/projects'
     | '/admin/settings'
     | '/admin/tags'
+    | '/admin/users'
+    | '/admin/visitors'
     | '/admin/posts/edit/$id'
   id:
     | '__root__'
@@ -323,12 +444,23 @@ export interface FileRouteTypes {
     | '/_public/'
     | '/admin/'
     | '/_public/post/$slug'
+    | '/admin/albums/'
+    | '/admin/bookmarks/'
+    | '/admin/books/'
+    | '/admin/categories/'
+    | '/admin/chatters/'
     | '/admin/comments/'
     | '/admin/friend-links/'
+    | '/admin/login-logs/'
     | '/admin/media/'
+    | '/admin/messages/'
+    | '/admin/music/'
     | '/admin/posts/'
+    | '/admin/projects/'
     | '/admin/settings/'
     | '/admin/tags/'
+    | '/admin/users/'
+    | '/admin/visitors/'
     | '/admin/posts/edit/$id'
   fileRoutesById: FileRoutesById
 }
@@ -475,6 +607,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPostsRouteRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/visitors/': {
+      id: '/admin/visitors/'
+      path: '/visitors'
+      fullPath: '/admin/visitors/'
+      preLoaderRoute: typeof AdminVisitorsIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/users/': {
+      id: '/admin/users/'
+      path: '/users'
+      fullPath: '/admin/users/'
+      preLoaderRoute: typeof AdminUsersIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/tags/': {
       id: '/admin/tags/'
       path: '/tags'
@@ -489,6 +635,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSettingsIndexRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/admin/projects/': {
+      id: '/admin/projects/'
+      path: '/projects'
+      fullPath: '/admin/projects/'
+      preLoaderRoute: typeof AdminProjectsIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/posts/': {
       id: '/admin/posts/'
       path: '/'
@@ -496,11 +649,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPostsIndexRouteImport
       parentRoute: typeof AdminPostsRouteRoute
     }
+    '/admin/music/': {
+      id: '/admin/music/'
+      path: '/music'
+      fullPath: '/admin/music/'
+      preLoaderRoute: typeof AdminMusicIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/messages/': {
+      id: '/admin/messages/'
+      path: '/messages'
+      fullPath: '/admin/messages/'
+      preLoaderRoute: typeof AdminMessagesIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
     '/admin/media/': {
       id: '/admin/media/'
       path: '/media'
       fullPath: '/admin/media/'
       preLoaderRoute: typeof AdminMediaIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/login-logs/': {
+      id: '/admin/login-logs/'
+      path: '/login-logs'
+      fullPath: '/admin/login-logs/'
+      preLoaderRoute: typeof AdminLoginLogsIndexRouteImport
       parentRoute: typeof AdminRouteRoute
     }
     '/admin/friend-links/': {
@@ -515,6 +689,41 @@ declare module '@tanstack/react-router' {
       path: '/comments'
       fullPath: '/admin/comments/'
       preLoaderRoute: typeof AdminCommentsIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/chatters/': {
+      id: '/admin/chatters/'
+      path: '/chatters'
+      fullPath: '/admin/chatters/'
+      preLoaderRoute: typeof AdminChattersIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/categories/': {
+      id: '/admin/categories/'
+      path: '/categories'
+      fullPath: '/admin/categories/'
+      preLoaderRoute: typeof AdminCategoriesIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/books/': {
+      id: '/admin/books/'
+      path: '/books'
+      fullPath: '/admin/books/'
+      preLoaderRoute: typeof AdminBooksIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/bookmarks/': {
+      id: '/admin/bookmarks/'
+      path: '/bookmarks'
+      fullPath: '/admin/bookmarks/'
+      preLoaderRoute: typeof AdminBookmarksIndexRouteImport
+      parentRoute: typeof AdminRouteRoute
+    }
+    '/admin/albums/': {
+      id: '/admin/albums/'
+      path: '/albums'
+      fullPath: '/admin/albums/'
+      preLoaderRoute: typeof AdminAlbumsIndexRouteImport
       parentRoute: typeof AdminRouteRoute
     }
     '/_public/post/$slug': {
@@ -607,21 +816,43 @@ const AdminPostsRouteRouteWithChildren = AdminPostsRouteRoute._addFileChildren(
 interface AdminRouteRouteChildren {
   AdminPostsRouteRoute: typeof AdminPostsRouteRouteWithChildren
   AdminIndexRoute: typeof AdminIndexRoute
+  AdminAlbumsIndexRoute: typeof AdminAlbumsIndexRoute
+  AdminBookmarksIndexRoute: typeof AdminBookmarksIndexRoute
+  AdminBooksIndexRoute: typeof AdminBooksIndexRoute
+  AdminCategoriesIndexRoute: typeof AdminCategoriesIndexRoute
+  AdminChattersIndexRoute: typeof AdminChattersIndexRoute
   AdminCommentsIndexRoute: typeof AdminCommentsIndexRoute
   AdminFriendLinksIndexRoute: typeof AdminFriendLinksIndexRoute
+  AdminLoginLogsIndexRoute: typeof AdminLoginLogsIndexRoute
   AdminMediaIndexRoute: typeof AdminMediaIndexRoute
+  AdminMessagesIndexRoute: typeof AdminMessagesIndexRoute
+  AdminMusicIndexRoute: typeof AdminMusicIndexRoute
+  AdminProjectsIndexRoute: typeof AdminProjectsIndexRoute
   AdminSettingsIndexRoute: typeof AdminSettingsIndexRoute
   AdminTagsIndexRoute: typeof AdminTagsIndexRoute
+  AdminUsersIndexRoute: typeof AdminUsersIndexRoute
+  AdminVisitorsIndexRoute: typeof AdminVisitorsIndexRoute
 }
 
 const AdminRouteRouteChildren: AdminRouteRouteChildren = {
   AdminPostsRouteRoute: AdminPostsRouteRouteWithChildren,
   AdminIndexRoute: AdminIndexRoute,
+  AdminAlbumsIndexRoute: AdminAlbumsIndexRoute,
+  AdminBookmarksIndexRoute: AdminBookmarksIndexRoute,
+  AdminBooksIndexRoute: AdminBooksIndexRoute,
+  AdminCategoriesIndexRoute: AdminCategoriesIndexRoute,
+  AdminChattersIndexRoute: AdminChattersIndexRoute,
   AdminCommentsIndexRoute: AdminCommentsIndexRoute,
   AdminFriendLinksIndexRoute: AdminFriendLinksIndexRoute,
+  AdminLoginLogsIndexRoute: AdminLoginLogsIndexRoute,
   AdminMediaIndexRoute: AdminMediaIndexRoute,
+  AdminMessagesIndexRoute: AdminMessagesIndexRoute,
+  AdminMusicIndexRoute: AdminMusicIndexRoute,
+  AdminProjectsIndexRoute: AdminProjectsIndexRoute,
   AdminSettingsIndexRoute: AdminSettingsIndexRoute,
   AdminTagsIndexRoute: AdminTagsIndexRoute,
+  AdminUsersIndexRoute: AdminUsersIndexRoute,
+  AdminVisitorsIndexRoute: AdminVisitorsIndexRoute,
 }
 
 const AdminRouteRouteWithChildren = AdminRouteRoute._addFileChildren(

@@ -17,7 +17,9 @@ export const getCategoriesFn = createServerFn()
   });
 
 /** 管理端：创建分类 */
-export const createCategoryFn = createServerFn()
+export const createCategoryFn = createServerFn({
+  method: "POST",
+})
   .middleware([adminMiddleware])
   .inputValidator(CreateCategoryInputSchema)
   .handler(async ({ data, context }) => {
@@ -25,7 +27,9 @@ export const createCategoryFn = createServerFn()
   });
 
 /** 管理端：更新分类 */
-export const updateCategoryFn = createServerFn()
+export const updateCategoryFn = createServerFn({
+  method: "POST",
+})
   .middleware([adminMiddleware])
   .inputValidator(UpdateCategoryInputSchema)
   .handler(async ({ data, context }) => {
@@ -33,7 +37,9 @@ export const updateCategoryFn = createServerFn()
   });
 
 /** 管理端：删除分类 */
-export const deleteCategoryFn = createServerFn()
+export const deleteCategoryFn = createServerFn({
+  method: "POST",
+})
   .middleware([adminMiddleware])
   .inputValidator(DeleteCategoryInputSchema)
   .handler(async ({ data, context }) => {
