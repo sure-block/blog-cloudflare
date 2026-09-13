@@ -61,6 +61,10 @@ export function MobileMenu({
           >
             星港 · 3D 太阳系
           </Link>
+          <Link to="/projects" onClick={onClose} className="glass-button px-4 py-3 text-foreground/85 hover:text-foreground">项目</Link>
+          <Link to="/messages" onClick={onClose} className="glass-button px-4 py-3 text-foreground/85 hover:text-foreground">留言板</Link>
+          <Link to="/timeline" onClick={onClose} className="glass-button px-4 py-3 text-foreground/85 hover:text-foreground">时间线</Link>
+          <Link to="/about" onClick={onClose} className="glass-button px-4 py-3 text-foreground/85 hover:text-foreground">关于</Link>
         </nav>
 
         <div className="mt-auto pt-6 border-t border-border/30">

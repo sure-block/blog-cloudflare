@@ -66,6 +66,27 @@ export function Navbar({ onMenuClick, user, navOptions, isLoading }: NavbarProps
           >
             星港
           </Link>
+          <Link
+            to="/projects"
+            className="glass-button px-4 py-2 text-sm text-foreground/80 hover:text-foreground !rounded-full"
+            activeProps={{ className: "!bg-white/60 dark:!bg-slate-700/60" }}
+          >
+            项目
+          </Link>
+          <Link
+            to="/messages"
+            className="glass-button px-4 py-2 text-sm text-foreground/80 hover:text-foreground !rounded-full"
+            activeProps={{ className: "!bg-white/60 dark:!bg-slate-700/60" }}
+          >
+            留言
+          </Link>
+          <Link
+            to="/about"
+            className="glass-button px-4 py-2 text-sm text-foreground/80 hover:text-foreground !rounded-full"
+            activeProps={{ className: "!bg-white/60 dark:!bg-slate-700/60" }}
+          >
+            关于
+          </Link>
         </nav>
 
         {/* Right: Actions */}
