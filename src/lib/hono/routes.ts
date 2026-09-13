@@ -48,6 +48,59 @@ app.route("/", siteDocumentsRoute);
 export type PublicApiType = typeof publicApi;
 
 /* ================================ 路由开始 ================================ */
+
+app.get("/feed.xml", async (c) => {
+  try {
+    const db = c.get("db");
+    const { PostsTable } = await import("@/lib/db/schema");
+    const { desc, eq } = await import("drizzle-orm");
+    const posts = await db
+      .select({
+        id: PostsTable.id,
+        title: PostsTable.title,
+        slug: PostsTable.slug,
+        summary: PostsTable.summary,
+        publishedAt: PostsTable.publishedAt,
+      })
+      .from(PostsTable)
+      .where(eq(PostsTable.status, "published"))
+      .orderBy(desc(PostsTable.publishedAt))
+      .limit(30);
+
+    const origin = new URL(c.req.url).origin;
+    const items = posts
+      .map((p) => {
+        const link = `${origin}/post/${p.slug}`;
+        return `    <item>
+      <title><![CDATA[${p.title}]]></title>
+      <link>${link}</link>
+      <guid>${link}</guid>
+      <pubDate>${p.publishedAt ? new Date(p.publishedAt).toUTCString() : ""}</pubDate>
+      <description><![CDATA[${p.summary ?? ""}]]></description>
+    </item>`;
+      })
+      .join("\n");
+
+    const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Blog</title>
+    <link>${origin}</link>
+    <description>Blog RSS Feed</description>
+    <language>zh-CN</language>
+${items}
+  </channel>
+</rss>`;
+
+    return c.text(xml, 200, {
+      "Content-Type": "application/xml; charset=utf-8",
+      "Cache-Control": "public, max-age=300",
+    });
+  } catch {
+    return c.text("Internal Server Error", 500);
+  }
+});
+
 app.get("/stats.js", async (c) => {
   const env = serverEnv(c.env);
   const umamiSrc = env.UMAMI_SRC;
