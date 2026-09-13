@@ -13,6 +13,9 @@ import { Route as AdminRouteRouteImport } from './routes/admin/route'
 import { Route as UserRouteRouteImport } from './routes/_user/route'
 import { Route as PublicRouteRouteImport } from './routes/_public/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
+import { Route as TimelineIndexRouteImport } from './routes/timeline/index'
+import { Route as PhotowallIndexRouteImport } from './routes/photowall/index'
+import { Route as MusicIndexRouteImport } from './routes/music/index'
 import { Route as AdminIndexRouteImport } from './routes/admin/index'
 import { Route as PublicIndexRouteImport } from './routes/_public/index'
 import { Route as OauthConsentRouteImport } from './routes/oauth/consent'
@@ -64,6 +67,21 @@ const PublicRouteRoute = PublicRouteRouteImport.update({
 } as any)
 const AuthRouteRoute = AuthRouteRouteImport.update({
   id: '/_auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TimelineIndexRoute = TimelineIndexRouteImport.update({
+  id: '/timeline/',
+  path: '/timeline/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PhotowallIndexRoute = PhotowallIndexRouteImport.update({
+  id: '/photowall/',
+  path: '/photowall/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MusicIndexRoute = MusicIndexRouteImport.update({
+  id: '/music/',
+  path: '/music/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
@@ -259,6 +277,9 @@ export interface FileRoutesByFullPath {
   '/submit-friend-link': typeof UserSubmitFriendLinkRoute
   '/oauth/consent': typeof OauthConsentRoute
   '/admin/': typeof AdminIndexRoute
+  '/music/': typeof MusicIndexRoute
+  '/photowall/': typeof PhotowallIndexRoute
+  '/timeline/': typeof TimelineIndexRoute
   '/post/$slug': typeof PublicPostSlugRoute
   '/admin/albums/': typeof AdminAlbumsIndexRoute
   '/admin/bookmarks/': typeof AdminBookmarksIndexRoute
@@ -295,6 +316,9 @@ export interface FileRoutesByTo {
   '/submit-friend-link': typeof UserSubmitFriendLinkRoute
   '/oauth/consent': typeof OauthConsentRoute
   '/admin': typeof AdminIndexRoute
+  '/music': typeof MusicIndexRoute
+  '/photowall': typeof PhotowallIndexRoute
+  '/timeline': typeof TimelineIndexRoute
   '/post/$slug': typeof PublicPostSlugRoute
   '/admin/albums': typeof AdminAlbumsIndexRoute
   '/admin/bookmarks': typeof AdminBookmarksIndexRoute
@@ -337,6 +361,9 @@ export interface FileRoutesById {
   '/oauth/consent': typeof OauthConsentRoute
   '/_public/': typeof PublicIndexRoute
   '/admin/': typeof AdminIndexRoute
+  '/music/': typeof MusicIndexRoute
+  '/photowall/': typeof PhotowallIndexRoute
+  '/timeline/': typeof TimelineIndexRoute
   '/_public/post/$slug': typeof PublicPostSlugRoute
   '/admin/albums/': typeof AdminAlbumsIndexRoute
   '/admin/bookmarks/': typeof AdminBookmarksIndexRoute
@@ -377,6 +404,9 @@ export interface FileRouteTypes {
     | '/submit-friend-link'
     | '/oauth/consent'
     | '/admin/'
+    | '/music/'
+    | '/photowall/'
+    | '/timeline/'
     | '/post/$slug'
     | '/admin/albums/'
     | '/admin/bookmarks/'
@@ -413,6 +443,9 @@ export interface FileRouteTypes {
     | '/submit-friend-link'
     | '/oauth/consent'
     | '/admin'
+    | '/music'
+    | '/photowall'
+    | '/timeline'
     | '/post/$slug'
     | '/admin/albums'
     | '/admin/bookmarks'
@@ -454,6 +487,9 @@ export interface FileRouteTypes {
     | '/oauth/consent'
     | '/_public/'
     | '/admin/'
+    | '/music/'
+    | '/photowall/'
+    | '/timeline/'
     | '/_public/post/$slug'
     | '/admin/albums/'
     | '/admin/bookmarks/'
@@ -482,6 +518,9 @@ export interface RootRouteChildren {
   UserRouteRoute: typeof UserRouteRouteWithChildren
   AdminRouteRoute: typeof AdminRouteRouteWithChildren
   OauthConsentRoute: typeof OauthConsentRoute
+  MusicIndexRoute: typeof MusicIndexRoute
+  PhotowallIndexRoute: typeof PhotowallIndexRoute
+  TimelineIndexRoute: typeof TimelineIndexRoute
   GardenStarsIndexRoute: typeof GardenStarsIndexRoute
 }
 
@@ -513,6 +552,27 @@ declare module '@tanstack/react-router' {
       path: ''
       fullPath: '/'
       preLoaderRoute: typeof AuthRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/timeline/': {
+      id: '/timeline/'
+      path: '/timeline'
+      fullPath: '/timeline/'
+      preLoaderRoute: typeof TimelineIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/photowall/': {
+      id: '/photowall/'
+      path: '/photowall'
+      fullPath: '/photowall/'
+      preLoaderRoute: typeof PhotowallIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/music/': {
+      id: '/music/'
+      path: '/music'
+      fullPath: '/music/'
+      preLoaderRoute: typeof MusicIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/': {
@@ -885,6 +945,9 @@ const rootRouteChildren: RootRouteChildren = {
   UserRouteRoute: UserRouteRouteWithChildren,
   AdminRouteRoute: AdminRouteRouteWithChildren,
   OauthConsentRoute: OauthConsentRoute,
+  MusicIndexRoute: MusicIndexRoute,
+  PhotowallIndexRoute: PhotowallIndexRoute,
+  TimelineIndexRoute: TimelineIndexRoute,
   GardenStarsIndexRoute: GardenStarsIndexRoute,
 }
 export const routeTree = rootRouteImport
